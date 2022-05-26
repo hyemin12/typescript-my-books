@@ -1,0 +1,89 @@
+/* Signin.module.css */
+
+.signin_title {
+  margin: 20px;
+  color: #3a96dd;
+  font-family: 'KNPSBandali-Regular00', 'sans-serif';
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.signin_subtitle {
+  font-family: 'KNPSBandali-Regular00', 'sans-serif';
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.signin_underline {
+  width: 200px;
+  height: 6px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+  background: linear-gradient(to right, #803b32, #ddb49b);
+}
+
+.signin_contents {
+  width: 800px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.signin_bg {
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/bg-signin1.jpg');
+  background-size: cover;
+}
+
+.contents_title {
+  font-size: 12px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.required {
+  margin-left: 10px;
+  color: tomato;
+}
+
+.input_area {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.input {
+  width: 100%;
+  border-radius: 1px;
+  border-width: 1px;
+  padding: 10px;
+}
+
+.button_area {
+  text-align: center;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.button {
+  width: 100%;
+  background-color: #28546a;
+  border-color: #28546a;
+  border-radius: 1px;
+  border-width: 2px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  background-color: #28546a;
+  color: white;
+}
