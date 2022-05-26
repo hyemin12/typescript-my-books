@@ -1,13 +1,42 @@
-import React, { useRef } from 'react';
-import { Row, Col, Button, Input } from 'antd';
+import React, { useEffect, useRef } from 'react';
+import { Row, Col, Button, Input, message } from 'antd';
 
 import styles from './Signin.module.css';
-import { SigninProps } from '../types';
+import { LoginReqType } from '../types';
 
-const Signin: React.FC<SigninProps> = ({ loading, error }) => {
+interface SigninProps {
+  loading: boolean;
+  error: Error | null;
+  login: ({ email, password }: LoginReqType) => void;
+}
+
+const Signin: React.FC<SigninProps> = ({ loading, error, login }) => {
   const emailRef = useRef<Input>(null);
   const passwordRef = useRef<Input>(null);
-  const onClick = () => {};
+
+  // 로그인
+  const onClick = () => {
+    const email = emailRef.current?.state.value;
+    const password = passwordRef.current?.state.value;
+
+    login({ email, password });
+  };
+
+  useEffect(() => {
+    if (error === null) return;
+
+    switch (error.message) {
+      case 'USER_NOT_EXIST':
+        message.error('회원정보가 존재하지 않습니다.');
+        break;
+      case 'PASSWORD_NOT_MATCH':
+        message.error('틀린 비밀번호');
+        break;
+      default:
+        message.error('알 수 없는 에러');
+    }
+  }, [error]);
+
   return (
     <form>
       <Row align="middle">
@@ -51,6 +80,7 @@ const Signin: React.FC<SigninProps> = ({ loading, error }) => {
                 <Button
                   size="large"
                   className={styles.button}
+                  loading={loading}
                   onClick={onClick}
                 >
                   로그인

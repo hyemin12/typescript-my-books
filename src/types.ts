@@ -1,6 +1,19 @@
-export interface SigninProps {
-  loading: boolean;
-  error: Error | null;
+export interface BookType {
+  bookId: number;
+  title: string;
+  author: string;
+  createdAt: string;
+  url: string;
+}
+
+export interface BookResType {
+  bookId: number;
+  title: string;
+  author: string;
+  message: string;
+  url: string;
+
+  createdAt: string;
 }
 
 export type LoginReqType = {

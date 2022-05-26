@@ -73,10 +73,22 @@ function* loginSaga(action: LoginSagaAction) {
     // push (page 이동)
     yield put(push('/'));
   } catch (error: any) {
-    yield put(fail(new Error(error?.response?.data?.error || 'UNKNOWN_ERROR')));
+    yield put(
+      fail(new Error(error?.response?.data?.error || '알 수 없는 오류')),
+    );
   }
 }
-function* logoutSaga() {}
+function* logoutSaga() {
+  try {
+    yield put(pending());
+    const token: string = yield select((state) => state.auth.token);
+    yield call(UserService.logout, token);
+  } catch (error) {
+  } finally {
+    TokenService.remove();
+    yield put(success(null));
+  }
+}
 export function* authSaga() {
   yield takeEvery(`${prefix}/LOGIN`, loginSaga);
   yield takeEvery(`${prefix}/LOGOUT`, logoutSaga);

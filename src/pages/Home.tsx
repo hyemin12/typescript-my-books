@@ -1,8 +1,15 @@
 import React from 'react';
-import SigninContainer from '../container/SigninContainer';
+import { Redirect } from 'react-router-dom';
+import ListContainer from '../containers/ListContainer';
+import useToken from '../hooks/useToken';
 
 const Home: React.FC = () => {
-  return <SigninContainer />;
+  const token = useToken();
+
+  // if (token === null) {
+  //   return <Redirect to="/signin" />;
+  // }
+  return <ListContainer />;
 };
 
 export default Home;
