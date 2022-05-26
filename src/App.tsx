@@ -1,15 +1,19 @@
 import React from 'react';
-import ErrorBoundary from 'react-error-boundary';
-import { Switch, Route } from 'react-router-dom';
-import './App.css';
+import { ErrorBoundary } from 'react-error-boundary';
+import { Switch, Route, HashRouter } from 'react-router-dom';
+
+import Home from './pages/Home';
+import Error from './pages/Error';
 
 function App() {
   return (
     <div className="App">
       <ErrorBoundary FallbackComponent={Error}>
-        <Switch>
-          <Route></Route>
-        </Switch>
+        <HashRouter>
+          <Switch>
+            <Route path="/" component={Home}></Route>
+          </Switch>
+        </HashRouter>
       </ErrorBoundary>
     </div>
   );
